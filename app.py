@@ -42,9 +42,9 @@ if prompt := st.chat_input("En que te puedo ayudar?"):
         message_placeholder = st.empty()
         full_response = ""
         #Judini
-        api_key= os.getenv("JUDINI_API_KEY")
-        agent_id= os.getenv("JUDINI_AGENT_ID")
-        url = 'https://playground.judini.ai/api/v1/agent/'+agent_id
+        api_key= os.getenv("CODEGPT_API_KEY")
+        agent_id= os.getenv("CODEGPT_AGENT_ID")
+        url = 'https://plus.codegpt.co/api/v1/agent/'+agent_id
         headers = {"Content-Type": "application/json; charset=utf-8", "Authorization": "Bearer "+api_key}
         data = {
             "messages": [
@@ -54,6 +54,7 @@ if prompt := st.chat_input("En que te puedo ayudar?"):
                 }
             ]
         }
+        st.write(url)
         response = requests.post(url, headers=headers, json=data, stream=True)
         raw_data = ''
         tokens = ''
