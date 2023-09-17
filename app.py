@@ -54,7 +54,7 @@ if prompt := st.chat_input("En que te puedo ayudar?"):
                 }
             ]
         }
-        st.write(url)
+
         response = requests.post(url, headers=headers, json=data, stream=True)
         raw_data = ''
         tokens = ''
