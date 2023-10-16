@@ -1,0 +1,66 @@
+[
+    {
+        "name": "post_serpapi",
+        "description": "Cualquier estadística o dato sobre los partidos de Messi",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "question": {
+                    "type": "string",
+                    "description": "Pregunta en el formato correcto para que un LLM la pueda entender"
+                }
+            },
+            "required": [
+                "question"
+            ]
+        }
+    },
+    {
+        "name": "messi_data_agent",
+        "description": "Cualquier pregunta relacionada con la persona de Messi, su historia personal o carrera deportiva o su historia familiar",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "question": {
+                    "type": "string",
+                    "description": "Pregunta en el formato correcto para que un LLM la pueda entender"
+                }
+            },
+            "required": [
+                "question"
+            ]
+        }
+    },
+    {
+        "name": "messi_partidos_agent",
+        "description": "Cualquier información relacionada a las fechas de los partidos de Messi en el Inter de Miami",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "question": {
+                    "type": "string",
+                    "description": "Pregunta en el formato correcto para que un LLM la pueda entender"
+                }
+            },
+            "required": [
+                "question"
+            ]
+        }
+    },
+    {
+        "name": "danigpt_agent",
+        "description": "Cualquier pregunta o solicitud sobre código, programación, machine learning, analisis de datos, desarrollo web, python o javascript",
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "question": {
+                    "type": "string",
+                    "description": "Pregunta en el formato correcto para que un LLM la pueda entender"
+                }
+            },
+            "required": [
+                "question"
+            ]
+        }
+    }
+]

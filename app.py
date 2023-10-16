@@ -6,7 +6,8 @@ import os
 from PIL import Image
 from dotenv import load_dotenv
 load_dotenv()
-
+api_key= os.getenv("CODEGPT_API_KEY")
+agent_id= os.getenv("CODEGPT_AGENT_ID")
 st.set_page_config(layout="centered")  
 
 col1, col2 = st.columns([2,3])
@@ -42,19 +43,11 @@ if prompt := st.chat_input("En que te puedo ayudar?"):
         message_placeholder = st.empty()
         full_response = ""
         #Judini
-        api_key= os.getenv("CODEGPT_API_KEY")
-        agent_id= os.getenv("CODEGPT_AGENT_ID")
         url = 'https://plus.codegpt.co/api/v1/agent/'+agent_id
         headers = {"Content-Type": "application/json; charset=utf-8", "Authorization": "Bearer "+api_key}
-        data = {
-            "messages": [
-                {
-                    "role": "user",
-                    "content": prompt
-                }
-            ]
-        }
-
+        
+        # session messages
+        data = { "messages": st.session_state.messages }
         response = requests.post(url, headers=headers, json=data, stream=True)
         raw_data = ''
         tokens = ''
@@ -74,6 +67,6 @@ if prompt := st.chat_input("En que te puedo ayudar?"):
                                 # Add a blinking cursor to simulate typing
                                 message_placeholder.markdown(full_response + "▌")
                             except json.JSONDecodeError:
-                                print(f'Error al decodificar el objeto JSON en la línea: {line}')
+                                print(f'Error al decodificar el objeto JSON en la línea: line')
         message_placeholder.markdown(full_response)
     st.session_state.messages.append({"role": "assistant", "content": full_response})
